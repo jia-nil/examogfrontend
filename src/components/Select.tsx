@@ -18,7 +18,10 @@ export default function Select({ label, options, value, onChange }: Props) {
           focus:outline-none focus:ring-1 focus:ring-accent
         "
         value={value}
-        onChange={e => onChange(e.target.value)}
+       onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+  onChange(e.target.value)
+}
+
       >
         <option value="">Select</option>
         {options.map(opt => (
