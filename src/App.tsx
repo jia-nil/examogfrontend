@@ -1,26 +1,33 @@
-import { useState } from "react"
-import Landing from "./pages/Landing"
-import Evaluate from "./pages/Evaluate"
-import Result from "./pages/Result"
+import { useState } from "react";
+import Landing from "./pages/Landing";
+import Evaluate from "./pages/Evaluate";
+import Result from "./pages/Result";
+
+type EvaluationResult = {
+  total_marks: number;
+  strengths: string[];
+  mistakes: string[];
+  improvements: string[];
+};
 
 export default function App() {
-  const [page, setPage] = useState<"landing" | "evaluate" | "result">("landing")
-  const [result, setResult] = useState(null)
+  const [page, setPage] = useState<"landing" | "evaluate" | "result">("landing");
+  const [result, setResult] = useState<EvaluationResult | null>(null);
 
-  async function handleEvaluate({ question, answer }) {
-    // TEMP MOCK (replace with backend call)
+  async function handleEvaluate(question: string, answer: string) {
     setResult({
       total_marks: 3.5,
-      strengths: ["Correct core concept"],
-      missing_points: ["Formula not clearly written"],
-      how_to_improve: ["Start with principle, then formula"],
-      model_answer: "Energy can neither be created nor destroyed..."
-    })
-    setPage("result")
+      strengths: ["Good intro"],
+      mistakes: ["Weak conclusion"],
+      improvements: ["Add examples"],
+    });
+    setPage("result");
   }
 
-  if (page === "landing") return <Landing onStart={() => setPage("evaluate")} />
-  if (page === "evaluate") return <Evaluate onEvaluate={handleEvaluate} />
-  return <Result result={result} onBack={() => setPage("evaluate")} />
-}
+  if (page === "landing") return <Landing onStart={() => setPage("evaluate")} />;
+  if (page === "evaluate") return <Evaluate onEvaluate={handleEvaluate} />;
+  if (page === "result" && result)
+    return <Result result={result} onBack={() => setPage("evaluate")} />;
 
+  return null;
+}

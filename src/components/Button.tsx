@@ -1,17 +1,9 @@
-export default function Button({ children, ...props }) {
-  return (
-    <button
-      className="
-        bg-accent text-white
-        px-6 py-3 rounded-lg
-        font-medium
-        hover:opacity-90
-        transition
-      "
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: ReactNode;
+};
+
+export default function Button({ children, ...props }: ButtonProps) {
+  return <button {...props}>{children}</button>;
+}

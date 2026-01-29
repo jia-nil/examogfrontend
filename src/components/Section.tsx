@@ -1,8 +1,15 @@
-export default function Section({ title, children }) {
+import { ReactNode } from "react";
+
+type SectionProps = {
+  title: string;
+  children: ReactNode;
+};
+
+export default function Section({ title, children }: SectionProps) {
   return (
-    <section className="space-y-3">
-      <h3 className="text-lg font-medium">{title}</h3>
+    <section>
+      <h2>{title}</h2>
       {children}
     </section>
-  )
+  );
 }
