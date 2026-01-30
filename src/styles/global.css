@@ -12,3 +12,24 @@ body {
     linear-gradient(180deg, #fefce8, #e0f2fe);
   background-attachment: fixed;
 }
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.4deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.floating-card:hover {
+  transform: translateY(-16px) scale(1.04);
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.25);
+}
