@@ -4,7 +4,7 @@ return (
     style={{
       position: "relative", // 🔥 IMPORTANT
       overflow: "hidden",   // 🔥 IMPORTANT
-      background: "linear-gradient(135deg, #667eea, #764ba2)",
+      background: "linear-gradient(135deg, #2563EB, #38BDF8)",
       color: "white",
       padding: "80px 24px",
       borderRadius: 16,
