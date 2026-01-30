@@ -17,30 +17,26 @@ export default function YearSection({ year, board }: Props) {
           const link = paperLinks?.[board]?.[year]?.[subj];
 
           return (
-            <div
-              key={subj}
-              onClick={() => link && window.open(link, "_blank")}
-              style={{
-                padding: "14px 18px",
-                borderRadius: 14,
-                background: link
-                  ? "linear-gradient(135deg, #fde047, #38bdf8)"
-                  : "#e5e7eb",
-                color: "#0f172a",
-                fontWeight: 600,
-                cursor: link ? "pointer" : "not-allowed",
-                boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
-                transition: "transform 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget.style.transform = "scale(1.05)"))
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget.style.transform = "scale(1)"))
-              }
-            >
-              {subj}
-            </div>
+           <div
+  key={subj}
+  className="floating-card"
+  onClick={() => link && window.open(link, "_blank")}
+  style={{
+    padding: "14px 20px",
+    borderRadius: 16,
+    background: link
+      ? "linear-gradient(135deg, #fde047, #38bdf8)"
+      : "#e5e7eb",
+    color: "#0f172a",
+    fontWeight: 700,
+    cursor: link ? "pointer" : "not-allowed",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+    animationDelay: `${Math.random() * 2}s`,
+  }}
+>
+  {subj}
+</div>
+
           );
         })}
       </div>
