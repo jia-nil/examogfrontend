@@ -28,7 +28,7 @@ return (
         left: 60,
         width: 120,
         height: 120,
-        background: "rgba(253, 224, 71, 0.45)",
+        background: "rgba(56, 189, 248, 0.35)",
         borderRadius: "50%",
         filter: "blur(40px)",
         animation: "float 8s ease-in-out infinite",
