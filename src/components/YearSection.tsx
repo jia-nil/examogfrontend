@@ -24,9 +24,7 @@ export default function YearSection({ year, board }: Props) {
   style={{
     padding: "14px 20px",
     borderRadius: 16,
-    background: link
-      ? "linear-gradient(135deg, #fde047, #38bdf8)"
-      : "#e5e7eb",
+    background: "linear-gradient(135deg, #FACC15, #38BDF8)",
     color: "#0f172a",
     fontWeight: 700,
     cursor: link ? "pointer" : "not-allowed",
