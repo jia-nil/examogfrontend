@@ -2,6 +2,7 @@ import { useState } from "react";
 import Hero from "../components/Hero";
 import Selector from "../components/Selector";
 import YearSection from "../components/YearSection";
+import Navbar from "../components/Navbar";
 
 const years = Array.from({ length: 16 }, (_, i) => 2025 - i);
 
@@ -22,6 +23,14 @@ export default function Dashboard() {
         }}
         onSelectBoard={setSelectedBoard}
       />
+      <Navbar />
+      <div
+  style={{
+    minHeight: "100vh",
+    background: "linear-gradient(180deg, #fef9c3, #e0f2fe)",
+    padding: 24,
+  }}
+>
 
       {/* 👇 THIS IS THE IMPORTANT PART */}
       {selectedClass && selectedBoard && (
