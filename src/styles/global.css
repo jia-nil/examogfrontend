@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, #fde68a, transparent 40%),
+    radial-gradient(circle at bottom right, #93c5fd, transparent 40%),
+    linear-gradient(180deg, #fefce8, #e0f2fe);
+  background-attachment: fixed;
+}
