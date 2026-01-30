@@ -15,7 +15,7 @@ export default function Selector({
     <div style={{ marginTop: 40 }}>
       <h2>Select Your Class</h2>
       <div style={{ display: "flex", gap: 12, marginBottom: 24 }}>
-        {[8, 9, 10, 11, 12].map((c) => (
+        {[10, 12].map((c) => (
           <button
             key={c}
             onClick={() => onSelectClass(c)}
@@ -36,7 +36,7 @@ export default function Selector({
         <>
           <h2>Select Board</h2>
           <div style={{ display: "flex", gap: 12 }}>
-            {["CBSE", "ICSE", "State"].map((b) => (
+            {["CBSE", "ICSE"].map((b) => (
               <button
                 key={b}
                 onClick={() => onSelectBoard(b)}
