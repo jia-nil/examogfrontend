@@ -1,33 +1,40 @@
-import PaperCard from "../components/PaperCard";
-import { papers, BoardPaper } from "../data/papers";
+import { useState } from "react";
+import Hero from "../components/Hero";
+import Selector from "../components/Selector";
+import YearSection from "../components/YearSection";
+
+const years = Array.from({ length: 16 }, (_, i) => 2025 - i);
 
 export default function Dashboard() {
-  function handleOpenPaper(paper: BoardPaper) {
-    alert(`Open paper: ${paper.subject} ${paper.year}`);
-    // later → navigate to paper view
-  }
+  const [selectedClass, setSelectedClass] = useState<number | null>(null);
+  const [selectedBoard, setSelectedBoard] = useState<string | null>(null);
 
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Class 10 Board Papers</h1>
-      <p>Select a paper to attempt</p>
+    <div style={{ padding: 24, maxWidth: 1100, margin: "0 auto" }}>
+      <Hero />
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-          gap: 16,
-          marginTop: 24,
+      <Selector
+        selectedClass={selectedClass}
+        selectedBoard={selectedBoard}
+        onSelectClass={(c) => {
+          setSelectedClass(c);
+          setSelectedBoard(null); // reset board when class changes
         }}
-      >
-        {papers.map((paper) => (
-          <PaperCard
-            key={paper.id}
-            paper={paper}
-            onOpen={handleOpenPaper}
-          />
-        ))}
-      </div>
+        onSelectBoard={setSelectedBoard}
+      />
+
+      {/* 👇 THIS IS THE IMPORTANT PART */}
+      {selectedClass && selectedBoard && (
+        <div style={{ marginTop: 48 }}>
+          <h2 style={{ marginBottom: 24 }}>
+            {selectedBoard} Class {selectedClass} – Previous Year Papers
+          </h2>
+
+          {years.map((year) => (
+            <YearSection key={year} year={year} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
