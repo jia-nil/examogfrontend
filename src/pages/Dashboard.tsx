@@ -31,7 +31,7 @@ export default function Dashboard() {
           </h2>
 
           {years.map((year) => (
-            <YearSection key={year} year={year} />
+  <YearSection key={year} year={year} board={selectedBoard} />
           ))}
         </div>
       )}
