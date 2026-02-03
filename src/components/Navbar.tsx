@@ -2,19 +2,39 @@ export default function Navbar() {
   return (
     <div
       style={{
-        padding: "16px 24px",
         display: "flex",
         alignItems: "center",
-        fontWeight: 900,
-        fontSize: 24,
-        color: "#1e3a8a",
+        padding: "32px 0",
       }}
     >
-      <span style={{ color: "#fde047" }}>exam</span>
-      <span style={{ color: "#2563eb" }}>OG</span>
-      <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 500 }}>
-        grind smart. score hard.
-      </span>
+      {/* Soft logo mark */}
+      <div
+        style={{
+          width: 42,
+          height: 42,
+          borderRadius: 14,
+          background: "#F3DCD4",
+          color: "#9F5F4B",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontWeight: 700,
+          fontSize: 18,
+          marginRight: 14,
+        }}
+      >
+        OG
+      </div>
+
+      {/* Wordmark */}
+      <div>
+        <div style={{ fontSize: 20, fontWeight: 700 }}>
+          exam<span style={{ opacity: 0.55 }}>OG</span>
+        </div>
+        <div style={{ fontSize: 12, color: "#78716C" }}>
+          calm board prep
+        </div>
+      </div>
     </div>
   );
 }
