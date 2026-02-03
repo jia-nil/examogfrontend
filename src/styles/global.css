@@ -4,19 +4,17 @@ html, body {
   min-height: 100%;
   font-family: 'Inter', system-ui, sans-serif;
 }
-
 body {
   background:
     linear-gradient(
-      rgba(248, 250, 252, 0.88),
-      rgba(248, 250, 252, 0.88)
+      rgba(250, 250, 249, 0.92),
+      rgba(250, 250, 249, 0.92)
     ),
-    url("/bg-aesthetic.jpg");
+    url("/bg-study.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
-
 
 
 @keyframes float {
