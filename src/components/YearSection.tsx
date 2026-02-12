@@ -9,35 +9,90 @@ const subjects = ["Maths", "Science", "English", "SST"];
 
 export default function YearSection({ year, board }: Props) {
   return (
-    <div style={{ marginTop: 28 }}>
-      <h3 style={{ marginBottom: 12, color: "#1e3a8a" }}>📅 {year}</h3>
+    <section style={{ padding: "0 48px 64px" }}>
+      {/* Year Header */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: "32px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "28px",
+            fontWeight: 600,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {year}
+        </h2>
 
-      <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+        <div
+          style={{
+            height: "1px",
+            flex: 1,
+            background: "#2A2F36",
+            marginLeft: "24px",
+          }}
+        />
+      </div>
+
+      {/* Subject Grid */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "24px",
+        }}
+      >
         {subjects.map((subj) => {
           const link = paperLinks?.[board]?.[year]?.[subj];
 
           return (
-           <div
-  key={subj}
-  className="floating-card"
-  onClick={() => link && window.open(link, "_blank")}
-  style={{
-    padding: "14px 20px",
-    borderRadius: 16,
-    background: "linear-gradient(135deg, #FACC15, #38BDF8)",
-    color: "#0f172a",
-    fontWeight: 700,
-    cursor: link ? "pointer" : "not-allowed",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-    animationDelay: `${Math.random() * 2}s`,
-  }}
->
-  {subj}
-</div>
+            <div
+              key={subj}
+              onClick={() => link && window.open(link, "_blank")}
+              style={{
+                padding: "28px",
+                borderRadius: "20px",
+                background: "#161A20",
+                border: "1px solid #2A2F36",
+                cursor: link ? "pointer" : "not-allowed",
+                transition: "all 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "#7C5CFF";
+                e.currentTarget.style.transform = "translateY(-4px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "#2A2F36";
+                e.currentTarget.style.transform = "translateY(0px)";
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  marginBottom: "6px",
+                }}
+              >
+                {subj}
+              </h3>
 
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "#9CA3AF",
+                }}
+              >
+                view paper & answers
+              </p>
+            </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
