@@ -17,53 +17,44 @@ export default function Dashboard() {
       <section
         style={{
           textAlign: "center",
-          padding: "120px 20px 80px",
+          padding: "110px 20px 70px",
         }}
       >
         <h1
           style={{
-            fontSize: 68,
+            fontSize: 64,
             fontWeight: 800,
             letterSpacing: "-0.04em",
-            marginBottom: 20,
+            marginBottom: 16,
           }}
         >
-          Study.
-          <br />
-          But Make It Aesthetic.
+          Previous Year Papers
         </h1>
 
         <p
           style={{
-            fontSize: 20,
-            color: "#6B7280",
-            maxWidth: 600,
-            margin: "0 auto",
-            lineHeight: 1.6,
+            fontSize: 18,
+            color: "#64748B",
           }}
         >
-          Board papers, clean answers,
-          and calm prep energy.
+          Class 10 & 12 · CBSE & ICSE
         </p>
       </section>
 
-      {/* Glass Panel */}
+      {/* Panel */}
       <div
         style={{
           maxWidth: 1100,
           margin: "0 auto",
-          padding: 40,
-          background: "rgba(255,255,255,0.65)",
-          backdropFilter: "blur(20px)",
-          borderRadius: 28,
-          boxShadow: "0 40px 80px rgba(0,0,0,0.12)",
+          padding: 48,
+          background: "#FFFFFF",
+          borderRadius: 32,
+          boxShadow: "0 25px 60px rgba(0,0,0,0.06)",
         }}
       >
-        {/* Class Selector */}
-        <div style={{ marginBottom: 40 }}>
-          <h3 style={{ marginBottom: 16 }}>Select Class</h3>
-
-          <div style={{ display: "flex", gap: 16 }}>
+        {/* Class + Board */}
+        <div style={{ marginBottom: 50 }}>
+          <div style={{ display: "flex", gap: 16, marginBottom: 24 }}>
             {[10, 12].map((cls) => (
               <div
                 key={cls}
@@ -78,13 +69,13 @@ export default function Dashboard() {
                   cursor: "pointer",
                   background:
                     selectedClass === cls
-                      ? "#7C3AED"
-                      : "#FFFFFF",
+                      ? "#2563EB"
+                      : "#E0E7FF",
                   color:
                     selectedClass === cls
                       ? "#FFFFFF"
-                      : "#1F2937",
-                  border: "1px solid rgba(0,0,0,0.08)",
+                      : "#0F172A",
+                  fontWeight: 500,
                   transition: "all 0.2s ease",
                 }}
               >
@@ -92,13 +83,8 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Board Selector */}
-        {selectedClass && (
-          <div style={{ marginBottom: 50 }}>
-            <h3 style={{ marginBottom: 16 }}>Select Board</h3>
-
+          {selectedClass && (
             <div style={{ display: "flex", gap: 16 }}>
               {["CBSE", "ICSE"].map((board) => (
                 <div
@@ -113,13 +99,13 @@ export default function Dashboard() {
                     cursor: "pointer",
                     background:
                       selectedBoard === board
-                        ? "#7C3AED"
-                        : "#FFFFFF",
+                        ? "#2563EB"
+                        : "#E0E7FF",
                     color:
                       selectedBoard === board
                         ? "#FFFFFF"
-                        : "#1F2937",
-                    border: "1px solid rgba(0,0,0,0.08)",
+                        : "#0F172A",
+                    fontWeight: 500,
                     transition: "all 0.2s ease",
                   }}
                 >
@@ -127,21 +113,19 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Year Grid */}
         {selectedClass && selectedBoard && (
           <>
             <div style={{ marginBottom: 50 }}>
-              <h3 style={{ marginBottom: 20 }}>Select Year</h3>
-
               <div
                 style={{
                   display: "grid",
                   gridTemplateColumns:
                     "repeat(auto-fit, minmax(90px, 1fr))",
-                  gap: 12,
+                  gap: 14,
                 }}
               >
                 {years.map((year) => (
@@ -150,18 +134,19 @@ export default function Dashboard() {
                     onClick={() => setSelectedYear(year)}
                     style={{
                       padding: "8px 0",
-                      borderRadius: 12,
+                      borderRadius: 14,
                       textAlign: "center",
                       cursor: "pointer",
                       background:
                         selectedYear === year
-                          ? "#7C3AED"
-                          : "#FFFFFF",
+                          ? "#2563EB"
+                          : "#F1F5FF",
                       color:
                         selectedYear === year
                           ? "#FFFFFF"
-                          : "#1F2937",
-                      border: "1px solid rgba(0,0,0,0.08)",
+                          : "#0F172A",
+                      fontSize: 14,
+                      fontWeight: 500,
                       transition: "all 0.2s ease",
                     }}
                   >
@@ -174,15 +159,11 @@ export default function Dashboard() {
             {/* Subjects */}
             {selectedYear && (
               <div>
-                <h3 style={{ marginBottom: 30 }}>
-                  {selectedBoard} • Class {selectedClass} • {selectedYear}
-                </h3>
-
                 <div
                   style={{
                     display: "grid",
                     gridTemplateColumns:
-                      "repeat(auto-fit, minmax(220px, 1fr))",
+                      "repeat(auto-fit, minmax(240px, 1fr))",
                     gap: 24,
                   }}
                 >
@@ -190,10 +171,9 @@ export default function Dashboard() {
                     <div
                       key={subj}
                       style={{
-                        padding: 30,
-                        borderRadius: 20,
-                        background: "#FFFFFF",
-                        border: "1px solid rgba(0,0,0,0.08)",
+                        padding: 36,
+                        borderRadius: 24,
+                        background: "#F8FAFF",
                         cursor: "pointer",
                         transition: "all 0.2s ease",
                       }}
@@ -206,14 +186,14 @@ export default function Dashboard() {
                           "translateY(0px)")
                       }
                     >
-                      <h3 style={{ marginBottom: 8 }}>{subj}</h3>
+                      <h3 style={{ marginBottom: 6 }}>{subj}</h3>
                       <p
                         style={{
-                          color: "#6B7280",
+                          color: "#64748B",
                           fontSize: 14,
                         }}
                       >
-                        View question & answer PDFs
+                        Question & Answer PDFs
                       </p>
                     </div>
                   ))}
