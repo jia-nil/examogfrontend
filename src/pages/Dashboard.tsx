@@ -10,14 +10,20 @@ export default function Dashboard() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
 
   return (
-    <div>
+    <div
+      style={{
+        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%)",
+      }}
+    >
       <Navbar />
 
       {/* Hero */}
       <section
         style={{
           textAlign: "center",
-          padding: "110px 20px 80px",
+          padding: "120px 20px 100px",
         }}
       >
         <h1
@@ -26,37 +32,42 @@ export default function Dashboard() {
             fontWeight: 700,
             letterSpacing: "-0.04em",
             marginBottom: 24,
+            color: "#1E293B",
           }}
         >
-          Calm. Structured.
+          Board Prep.
           <br />
-          Board Preparation.
+          Made Beautiful.
         </h1>
 
         <p
           style={{
             fontSize: 20,
-            color: "#6B7280",
+            color: "#64748B",
             maxWidth: 600,
             margin: "0 auto",
             lineHeight: 1.6,
           }}
         >
-          Previous year papers and clean answer PDFs.
+          Previous year papers with structured answers.
           Designed for focused revision.
         </p>
       </section>
 
-      {/* Content */}
+      {/* Floating Panel */}
       <div
         style={{
           maxWidth: 1100,
           margin: "0 auto",
-          padding: "0 40px 120px",
+          padding: 40,
+          background: "rgba(255,255,255,0.75)",
+          backdropFilter: "blur(20px)",
+          borderRadius: 24,
+          boxShadow: "0 40px 80px rgba(0,0,0,0.08)",
         }}
       >
         {/* Class Selector */}
-        <div style={{ marginBottom: 50 }}>
+        <div style={{ marginBottom: 40 }}>
           <h3 style={{ marginBottom: 16 }}>Select Class</h3>
 
           <div style={{ display: "flex", gap: 16 }}>
@@ -70,13 +81,17 @@ export default function Dashboard() {
                 }}
                 style={{
                   padding: "10px 22px",
-                  border: "1px solid #E7E5E4",
                   borderRadius: 999,
                   cursor: "pointer",
                   background:
-                    selectedClass === cls ? "#5E8B7E" : "#FFFFFF",
+                    selectedClass === cls
+                      ? "#4F46E5"
+                      : "#FFFFFF",
                   color:
-                    selectedClass === cls ? "#FFFFFF" : "#1C1917",
+                    selectedClass === cls
+                      ? "#FFFFFF"
+                      : "#1E293B",
+                  border: "1px solid #E2E8F0",
                   transition: "all 0.2s ease",
                 }}
               >
@@ -88,7 +103,7 @@ export default function Dashboard() {
 
         {/* Board Selector */}
         {selectedClass && (
-          <div style={{ marginBottom: 60 }}>
+          <div style={{ marginBottom: 50 }}>
             <h3 style={{ marginBottom: 16 }}>Select Board</h3>
 
             <div style={{ display: "flex", gap: 16 }}>
@@ -101,17 +116,17 @@ export default function Dashboard() {
                   }}
                   style={{
                     padding: "10px 22px",
-                    border: "1px solid #E7E5E4",
                     borderRadius: 999,
                     cursor: "pointer",
                     background:
                       selectedBoard === board
-                        ? "#5E8B7E"
+                        ? "#4F46E5"
                         : "#FFFFFF",
                     color:
                       selectedBoard === board
                         ? "#FFFFFF"
-                        : "#1C1917",
+                        : "#1E293B",
+                    border: "1px solid #E2E8F0",
                     transition: "all 0.2s ease",
                   }}
                 >
@@ -122,17 +137,18 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* Year Strip */}
+        {/* Year Grid */}
         {selectedClass && selectedBoard && (
           <>
-            <div style={{ marginBottom: 60 }}>
+            <div style={{ marginBottom: 50 }}>
               <h3 style={{ marginBottom: 20 }}>Select Year</h3>
 
               <div
                 style={{
-                  display: "flex",
+                  display: "grid",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(100px, 1fr))",
                   gap: 14,
-                  overflowX: "auto",
                 }}
               >
                 {years.map((year) => (
@@ -140,20 +156,19 @@ export default function Dashboard() {
                     key={year}
                     onClick={() => setSelectedYear(year)}
                     style={{
-                      padding: "8px 18px",
-                      border: "1px solid #E7E5E4",
-                      borderRadius: 999,
+                      padding: "10px 0",
+                      borderRadius: 12,
+                      textAlign: "center",
                       cursor: "pointer",
-                      whiteSpace: "nowrap",
                       background:
                         selectedYear === year
-                          ? "#5E8B7E"
+                          ? "#4F46E5"
                           : "#FFFFFF",
                       color:
                         selectedYear === year
                           ? "#FFFFFF"
-                          : "#1C1917",
-                      fontSize: 14,
+                          : "#1E293B",
+                      border: "1px solid #E2E8F0",
                       transition: "all 0.2s ease",
                     }}
                   >
@@ -163,11 +178,11 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Subject Grid */}
+            {/* Subject Cards */}
             {selectedYear && (
               <div>
                 <h3 style={{ marginBottom: 32 }}>
-                  {selectedBoard} Class {selectedClass} — {selectedYear}
+                  {selectedBoard} • Class {selectedClass} • {selectedYear}
                 </h3>
 
                 <div
@@ -175,34 +190,33 @@ export default function Dashboard() {
                     display: "grid",
                     gridTemplateColumns:
                       "repeat(auto-fit, minmax(240px, 1fr))",
-                    gap: 28,
+                    gap: 24,
                   }}
                 >
                   {subjects.map((subj) => (
                     <div
                       key={subj}
                       style={{
-                        padding: 36,
-                        border: "1px solid #E7E5E4",
+                        padding: 32,
                         borderRadius: 18,
                         background: "#FFFFFF",
+                        border: "1px solid #E2E8F0",
                         cursor: "pointer",
-                        transition: "all 0.25s ease",
+                        transition: "all 0.2s ease",
                       }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.borderColor =
-                          "#5E8B7E")
+                        (e.currentTarget.style.transform =
+                          "translateY(-4px)")
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.borderColor =
-                          "#E7E5E4")
+                        (e.currentTarget.style.transform =
+                          "translateY(0px)")
                       }
                     >
                       <h3 style={{ marginBottom: 8 }}>{subj}</h3>
-
                       <p
                         style={{
-                          color: "#6B7280",
+                          color: "#64748B",
                           fontSize: 14,
                         }}
                       >
