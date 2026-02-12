@@ -14,7 +14,7 @@ export default function Navbar() {
       </div>
 
       <div style={{ color: "#9CA3AF", fontSize: 14 }}>
-        calm board prep
+        
       </div>
     </div>
   );
