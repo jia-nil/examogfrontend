@@ -2,13 +2,15 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+  background: linear-gradient(
+    135deg,
+    #F6F8FF 0%,
+    #F1F5FF 40%,
+    #F0F9FF 100%
+  );
   color: #1F2937;
 }
 
-* {
-  box-sizing: border-box;
-}
 
 
 /* Remove ugly blue highlight */
