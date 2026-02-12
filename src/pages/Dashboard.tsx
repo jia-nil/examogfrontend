@@ -9,59 +9,104 @@ const years = Array.from({ length: 16 }, (_, i) => 2025 - i);
 export default function Dashboard() {
   const [selectedClass, setSelectedClass] = useState<number | null>(null);
   const [selectedBoard, setSelectedBoard] = useState<string | null>(null);
+  const [selectedYear, setSelectedYear] = useState<number | null>(null);
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(180deg, #fef9c3, #e0f2fe)",
-        padding: 24,
-      }}
-    >
-      {/* 🌟 Top branding */}
+    <div style={{ minHeight: "100vh" }}>
+      
+      {/* Top Navigation */}
       <Navbar />
 
-      {/* 📦 Main glass container */}
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Main Content Wrapper */}
       <div
         style={{
-          maxWidth: 1100,
+          maxWidth: 1200,
           margin: "0 auto",
-          padding: 24,
-          background: "rgba(255, 255, 255, 0.75)",
-          backdropFilter: "blur(14px)",
-          borderRadius: 24,
-          boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
+          padding: "60px 48px",
         }}
       >
-        {/* 🌈 Hero section */}
-        <Hero />
 
-        {/* 🎓 Class & Board selector */}
+        {/* Class + Board Selector */}
         <Selector
           selectedClass={selectedClass}
           selectedBoard={selectedBoard}
           onSelectClass={(c) => {
             setSelectedClass(c);
-            setSelectedBoard(null); // reset board when class changes
+            setSelectedBoard(null);
+            setSelectedYear(null);
           }}
-          onSelectBoard={setSelectedBoard}
+          onSelectBoard={(b) => {
+            setSelectedBoard(b);
+            setSelectedYear(null);
+          }}
         />
 
-        {/* 📚 Papers listing */}
+        {/* Year Strip (Only show when class + board selected) */}
         {selectedClass && selectedBoard && (
-          <div style={{ marginTop: 48 }}>
-            <h2 style={{ marginBottom: 24 }}>
-              {selectedBoard} Class {selectedClass} – Previous Year Papers
-            </h2>
+          <>
+            <div
+              style={{
+                marginTop: 80,
+                marginBottom: 40,
+                borderBottom: "1px solid #2A2F36",
+                paddingBottom: 24,
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: 22,
+                  fontWeight: 600,
+                  marginBottom: 24,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {selectedBoard} • Class {selectedClass}
+              </h2>
 
-            {years.map((year) => (
+              {/* Horizontal Scroll Years */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: 20,
+                  overflowX: "auto",
+                  paddingBottom: 8,
+                }}
+              >
+                {years.map((year) => (
+                  <div
+                    key={year}
+                    onClick={() => setSelectedYear(year)}
+                    style={{
+                      padding: "14px 22px",
+                      borderRadius: 16,
+                      background:
+                        selectedYear === year
+                          ? "#7C5CFF"
+                          : "#161A20",
+                      border: "1px solid #2A2F36",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      whiteSpace: "nowrap",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {year}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Subject Section */}
+            {selectedYear && (
               <YearSection
-                key={year}
-                year={year}
+                year={selectedYear}
                 board={selectedBoard}
               />
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
     </div>
