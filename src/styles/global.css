@@ -1,37 +1,44 @@
+/* Base Reset */
 html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-body {
-  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: #0F1115;
-  font-family: Inter, system-ui, sans-serif;
   color: #F3F4F6;
 }
 
-
-
-@keyframes float {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(0.4deg);
-  }
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
+/* Remove ugly blue highlight */
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Scrollbar (premium subtle) */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F1115;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2F36;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3F47;
+}
+
+/* Remove old floating animations */
 .floating-card {
-  animation: float 6s ease-in-out infinite;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.floating-card:hover {
-  transform: translateY(-16px) scale(1.04);
-  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.25);
+  animation: none;
 }
