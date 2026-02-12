@@ -3,37 +3,18 @@ export default function Navbar() {
     <div
       style={{
         display: "flex",
+        justifyContent: "space-between",
         alignItems: "center",
-        padding: "32px 0",
+        padding: "28px 48px",
+        borderBottom: "1px solid #2A2F36",
       }}
     >
-      {/* Soft logo mark */}
-      <div
-        style={{
-          width: 42,
-          height: 42,
-          borderRadius: 14,
-          background: "#F3DCD4",
-          color: "#9F5F4B",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: 700,
-          fontSize: 18,
-          marginRight: 14,
-        }}
-      >
-        OG
+      <div style={{ fontSize: 20, fontWeight: 700 }}>
+        exam<span style={{ color: "#7C5CFF" }}>OG</span>
       </div>
 
-      {/* Wordmark */}
-      <div>
-        <div style={{ fontSize: 20, fontWeight: 700 }}>
-          exam<span style={{ opacity: 0.55 }}>OG</span>
-        </div>
-        <div style={{ fontSize: 12, color: "#78716C" }}>
-          calm board prep
-        </div>
+      <div style={{ color: "#9CA3AF", fontSize: 14 }}>
+        calm board prep
       </div>
     </div>
   );
