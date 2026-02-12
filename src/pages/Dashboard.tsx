@@ -1,10 +1,8 @@
 import { useState } from "react";
-import Hero from "../components/Hero";
-import Selector from "../components/Selector";
-import YearSection from "../components/YearSection";
 import Navbar from "../components/Navbar";
 
 const years = Array.from({ length: 16 }, (_, i) => 2025 - i);
+const subjects = ["Maths", "Science", "English", "SST"];
 
 export default function Dashboard() {
   const [selectedClass, setSelectedClass] = useState<number | null>(null);
@@ -12,67 +10,128 @@ export default function Dashboard() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
-      
+    <div>
       {/* Top Navigation */}
       <Navbar />
 
       {/* Hero Section */}
-      <Hero />
-
-      {/* Main Content Wrapper */}
-      <div
+      <section
         style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "60px 48px",
+          textAlign: "center",
+          padding: "120px 20px 100px",
         }}
       >
-
-        {/* Class + Board Selector */}
-        <Selector
-          selectedClass={selectedClass}
-          selectedBoard={selectedBoard}
-          onSelectClass={(c) => {
-            setSelectedClass(c);
-            setSelectedBoard(null);
-            setSelectedYear(null);
+        <h1
+          style={{
+            fontSize: 72,
+            fontWeight: 700,
+            letterSpacing: "-0.04em",
+            marginBottom: 24,
           }}
-          onSelectBoard={(b) => {
-            setSelectedBoard(b);
-            setSelectedYear(null);
-          }}
-        />
+        >
+          Board preparation.
+          <br />
+          Simplified.
+        </h1>
 
-        {/* Year Strip (Only show when class + board selected) */}
-        {selectedClass && selectedBoard && (
-          <>
-            <div
-              style={{
-                marginTop: 80,
-                marginBottom: 40,
-                borderBottom: "1px solid #2A2F36",
-                paddingBottom: 24,
-              }}
-            >
-              <h2
+        <p
+          style={{
+            fontSize: 20,
+            color: "#6B6B6B",
+            maxWidth: 600,
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}
+        >
+          Previous year question papers and answer PDFs.
+          Structured. Minimal. Focused.
+        </p>
+      </section>
+
+      {/* Main Content */}
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding: "0 40px 120px",
+        }}
+      >
+        {/* Class Selector */}
+        <div style={{ marginBottom: 40 }}>
+          <h3 style={{ marginBottom: 16 }}>Select Class</h3>
+
+          <div style={{ display: "flex", gap: 16 }}>
+            {[10, 12].map((cls) => (
+              <div
+                key={cls}
+                onClick={() => {
+                  setSelectedClass(cls);
+                  setSelectedBoard(null);
+                  setSelectedYear(null);
+                }}
                 style={{
-                  fontSize: 22,
-                  fontWeight: 600,
-                  marginBottom: 24,
-                  letterSpacing: "-0.02em",
+                  padding: "10px 20px",
+                  border: "1px solid #E6E6E6",
+                  borderRadius: 999,
+                  cursor: "pointer",
+                  background:
+                    selectedClass === cls ? "#111111" : "transparent",
+                  color:
+                    selectedClass === cls ? "#FFFFFF" : "#111111",
                 }}
               >
-                {selectedBoard} • Class {selectedClass}
-              </h2>
+                Class {cls}
+              </div>
+            ))}
+          </div>
+        </div>
 
-              {/* Horizontal Scroll Years */}
+        {/* Board Selector */}
+        {selectedClass && (
+          <div style={{ marginBottom: 60 }}>
+            <h3 style={{ marginBottom: 16 }}>Select Board</h3>
+
+            <div style={{ display: "flex", gap: 16 }}>
+              {["CBSE", "ICSE"].map((board) => (
+                <div
+                  key={board}
+                  onClick={() => {
+                    setSelectedBoard(board);
+                    setSelectedYear(null);
+                  }}
+                  style={{
+                    padding: "10px 20px",
+                    border: "1px solid #E6E6E6",
+                    borderRadius: 999,
+                    cursor: "pointer",
+                    background:
+                      selectedBoard === board
+                        ? "#111111"
+                        : "transparent",
+                    color:
+                      selectedBoard === board
+                        ? "#FFFFFF"
+                        : "#111111",
+                  }}
+                >
+                  {board}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Year Strip */}
+        {selectedClass && selectedBoard && (
+          <>
+            <div style={{ marginBottom: 60 }}>
+              <h3 style={{ marginBottom: 20 }}>Select Year</h3>
+
               <div
                 style={{
                   display: "flex",
-                  gap: 20,
+                  gap: 16,
                   overflowX: "auto",
-                  paddingBottom: 8,
                 }}
               >
                 {years.map((year) => (
@@ -80,17 +139,19 @@ export default function Dashboard() {
                     key={year}
                     onClick={() => setSelectedYear(year)}
                     style={{
-                      padding: "14px 22px",
-                      borderRadius: 16,
+                      padding: "10px 18px",
+                      border: "1px solid #E6E6E6",
+                      borderRadius: 999,
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
                       background:
                         selectedYear === year
-                          ? "#7C5CFF"
-                          : "#161A20",
-                      border: "1px solid #2A2F36",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                      whiteSpace: "nowrap",
-                      fontWeight: 500,
+                          ? "#111111"
+                          : "transparent",
+                      color:
+                        selectedYear === year
+                          ? "#FFFFFF"
+                          : "#111111",
                     }}
                   >
                     {year}
@@ -99,12 +160,49 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Subject Section */}
+            {/* Subject Grid */}
             {selectedYear && (
-              <YearSection
-                year={selectedYear}
-                board={selectedBoard}
-              />
+              <div>
+                <h3 style={{ marginBottom: 32 }}>
+                  {selectedBoard} Class {selectedClass} — {selectedYear}
+                </h3>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns:
+                      "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: 32,
+                  }}
+                >
+                  {subjects.map((subj) => (
+                    <div
+                      key={subj}
+                      style={{
+                        padding: 40,
+                        border: "1px solid #E6E6E6",
+                        borderRadius: 20,
+                        background: "#FFFFFF",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                      }}
+                    >
+                      <h3 style={{ marginBottom: 8 }}>
+                        {subj}
+                      </h3>
+
+                      <p
+                        style={{
+                          color: "#6B6B6B",
+                          fontSize: 14,
+                        }}
+                      >
+                        View question & answer PDFs
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
           </>
         )}
