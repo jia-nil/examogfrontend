@@ -3,7 +3,7 @@ export default function Hero() {
    <section
   style={{
     textAlign: "center",
-    padding: "120px 20px 80px",
+    padding: "110px 20px 70px",
   }}
 >
   <h1
@@ -14,22 +14,19 @@ export default function Hero() {
       marginBottom: 16,
     }}
   >
-    Previous Year Board Papers
+    Previous Year Papers
   </h1>
 
   <p
     style={{
       fontSize: 18,
-      color: "#6B7280",
-      maxWidth: 600,
-      margin: "0 auto",
-      lineHeight: 1.6,
+      color: "#64748B",
     }}
   >
-    Class 10 & 12 papers with answer PDFs.
-    Simple. Organized. Easy to access.
+    Class 10 & 12 · CBSE & ICSE
   </p>
 </section>
+
 
   );
 }
