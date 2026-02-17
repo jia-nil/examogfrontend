@@ -2,51 +2,28 @@ export default function Navbar() {
   return (
     <div
       style={{
-        position: "sticky",
-        top: 20,
-        margin: "20px auto",
-        width: "92%",
-        maxWidth: 1200,
-        backdropFilter: "blur(14px)",
-        background: "rgba(255, 255, 255, 0.6)",
-        borderRadius: 30,
-        padding: "18px 40px",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: 64,
+        background: "#F6F7FB",
+        borderBottom: "1px solid #E5E7EB",
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
-        boxShadow: "0 10px 40px rgba(0,0,0,0.05)",
-        zIndex: 999,
+        padding: "0 24px",
+        zIndex: 1000,
       }}
     >
-      {/* Logo */}
       <div
         style={{
-          fontSize: 28,
-          fontFamily: "Parisienne, cursive",
-          letterSpacing: "1px",
-          color: "#1F2937",
+          fontSize: 16,
+          fontWeight: 600,
+          letterSpacing: "-0.2px",
+          color: "#111827",
         }}
       >
-        exam
-        <span
-          style={{
-            color: "#8B5CF6",
-            marginLeft: 4,
-          }}
-        >
-          OG
-        </span>
-      </div>
-
-      {/* Right Side (empty for now but aesthetic spacing) */}
-      <div
-        style={{
-          fontSize: 14,
-          color: "#6B7280",
-          fontFamily: "Poppins, sans-serif",
-        }}
-      >
-        
+        Examog
       </div>
     </div>
   );
