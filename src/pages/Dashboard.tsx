@@ -11,8 +11,7 @@ export default function Dashboard() {
     <div
       style={{
         minHeight: "100vh",
-        background:
-          "linear-gradient(135deg, #f9fafb 0%, #eef2ff 100%)",
+        background: "#F8FAFC",
       }}
     >
       <Navbar />
@@ -26,22 +25,30 @@ export default function Dashboard() {
       >
         <h1
           style={{
-            fontSize: 58,
-            fontWeight: 800,
+            fontSize: 56,
+            fontWeight: 700,
             marginBottom: 16,
-            background:
-              "linear-gradient(90deg, #2563EB, #4F46E5)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "#0F172A",
+            letterSpacing: "-1px",
           }}
         >
           Class 10 CBSE
         </h1>
 
+        <div
+          style={{
+            width: 60,
+            height: 3,
+            background: "#C6A75E",
+            margin: "0 auto 18px",
+            borderRadius: 2,
+          }}
+        />
+
         <p
           style={{
             fontSize: 18,
-            color: "#6B7280",
+            color: "#64748B",
             letterSpacing: "0.3px",
           }}
         >
@@ -73,44 +80,37 @@ export default function Dashboard() {
               onClick={() => setSelectedYear(year)}
               style={{
                 padding: "14px 0",
-                borderRadius: 14,
+                borderRadius: 10,
                 textAlign: "center",
                 cursor: "pointer",
-                fontWeight: 600,
-                backdropFilter: "blur(6px)",
+                fontWeight: 500,
                 background:
                   selectedYear === year
-                    ? "linear-gradient(90deg, #2563EB, #4F46E5)"
-                    : "rgba(255,255,255,0.7)",
+                    ? "#0F172A"
+                    : "#FFFFFF",
                 color:
                   selectedYear === year
-                    ? "#FFFFFF"
-                    : "#111827",
+                    ? "#C6A75E"
+                    : "#0F172A",
                 border:
                   selectedYear === year
                     ? "none"
-                    : "1px solid rgba(0,0,0,0.05)",
+                    : "1px solid #E2E8F0",
                 boxShadow:
                   selectedYear === year
-                    ? "0 8px 20px rgba(79,70,229,0.3)"
-                    : "0 4px 10px rgba(0,0,0,0.03)",
-                transition: "all 0.25s ease",
+                    ? "0 8px 20px rgba(15,23,42,0.15)"
+                    : "0 3px 8px rgba(0,0,0,0.03)",
+                transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
                 if (selectedYear !== year) {
                   e.currentTarget.style.transform =
-                    "translateY(-3px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 18px rgba(0,0,0,0.06)";
+                    "translateY(-2px)";
                 }
               }}
               onMouseLeave={(e) => {
-                if (selectedYear !== year) {
-                  e.currentTarget.style.transform =
-                    "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 10px rgba(0,0,0,0.03)";
-                }
+                e.currentTarget.style.transform =
+                  "translateY(0)";
               }}
             >
               {year}
@@ -132,41 +132,51 @@ export default function Dashboard() {
               <div
                 key={subj}
                 style={{
-                  padding: 36,
-                  borderRadius: 20,
-                  background: "rgba(255,255,255,0.8)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(0,0,0,0.05)",
+                  padding: 40,
+                  borderRadius: 16,
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
                   boxShadow:
-                    "0 6px 18px rgba(0,0,0,0.04)",
+                    "0 8px 24px rgba(15,23,42,0.05)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform =
                     "translateY(-6px)";
                   e.currentTarget.style.boxShadow =
-                    "0 14px 30px rgba(0,0,0,0.08)";
+                    "0 14px 32px rgba(15,23,42,0.08)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform =
                     "translateY(0)";
                   e.currentTarget.style.boxShadow =
-                    "0 6px 18px rgba(0,0,0,0.04)";
+                    "0 8px 24px rgba(15,23,42,0.05)";
                 }}
               >
                 <h3
                   style={{
-                    marginBottom: 10,
+                    marginBottom: 12,
                     fontSize: 20,
                     fontWeight: 600,
+                    color: "#0F172A",
                   }}
                 >
                   {subj}
                 </h3>
+
+                <div
+                  style={{
+                    width: 40,
+                    height: 2,
+                    background: "#C6A75E",
+                    marginBottom: 14,
+                  }}
+                />
+
                 <p
                   style={{
-                    color: "#6B7280",
+                    color: "#64748B",
                     fontSize: 14,
                     lineHeight: 1.6,
                   }}
