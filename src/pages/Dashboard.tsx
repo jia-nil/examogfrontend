@@ -26,6 +26,27 @@ export default function Dashboard() {
       }}
     >
       <Navbar />
+      {/* Sidebar Toggle Button */}
+<button
+  onClick={() => setSidebarOpen(!sidebarOpen)}
+  style={{
+    position: "fixed",
+    top: 24,
+    left: 24,
+    width: 36,
+    height: 36,
+    borderRadius: 8,
+    border: "none",
+    background: darkMode ? "#1E293B" : "#FFFFFF",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+    cursor: "pointer",
+    zIndex: 1100,
+    fontSize: 18,
+  }}
+>
+  ☰
+</button>
+
 
     {/* Sidebar */}
 <div
