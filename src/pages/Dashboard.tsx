@@ -240,6 +240,37 @@ export default function Dashboard() {
   );
 }
 
+function SidebarItem({
+  label,
+  darkMode,
+}: {
+  label: string;
+  darkMode: boolean;
+}) {
+  return (
+    <div
+      style={{
+        padding: "10px 12px",
+        borderRadius: 8,
+        cursor: "pointer",
+        color: darkMode ? "#E2E8F0" : "#111827",
+        fontSize: 14,
+        transition: "background 0.2s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = darkMode
+          ? "#1E293B"
+          : "#E5E7EB";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "transparent";
+      }}
+    >
+      {label}
+    </div>
+  );
+}
+
 const sidebarBtn = {
   width: "100%",
   padding: "10px 14px",
