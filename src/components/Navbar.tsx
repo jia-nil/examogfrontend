@@ -1,4 +1,8 @@
-export default function Navbar() {
+type NavbarProps = {
+  onToggleSidebar: () => void;
+};
+
+export default function Navbar({ onToggleSidebar }: NavbarProps) {
   return (
     <div
       style={{
@@ -11,15 +15,27 @@ export default function Navbar() {
         borderBottom: "1px solid #E5E7EB",
         display: "flex",
         alignItems: "center",
-        padding: "0 24px",
-        zIndex: 1000,
+        padding: "0 20px",
+        zIndex: 1100,
+        gap: 16,
       }}
     >
+      <button
+        onClick={onToggleSidebar}
+        style={{
+          background: "transparent",
+          border: "none",
+          fontSize: 18,
+          cursor: "pointer",
+        }}
+      >
+        ☰
+      </button>
+
       <div
         style={{
           fontSize: 16,
           fontWeight: 600,
-          letterSpacing: "-0.2px",
           color: "#111827",
         }}
       >
