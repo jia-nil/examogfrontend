@@ -9,10 +9,11 @@ export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const bgColor = darkMode ? "#0B1120" : "#F1F5F9";
-  const cardColor = darkMode ? "#111827" : "#FFFFFF";
+  const bgColor = darkMode ? "#0F172A" : "#EEF2F7";
+  const cardColor = darkMode ? "#1E293B" : "#FFFFFF";
   const textColor = darkMode ? "#E2E8F0" : "#0F172A";
   const subTextColor = darkMode ? "#94A3B8" : "#64748B";
+  const accent = darkMode ? "#818CF8" : "#3B82F6";
 
   return (
     <div
@@ -21,6 +22,7 @@ export default function Dashboard() {
         background: bgColor,
         transition: "all 0.3s ease",
         color: textColor,
+        fontFamily: "Poppins, sans-serif",
       }}
     >
       <Navbar />
@@ -33,43 +35,40 @@ export default function Dashboard() {
           left: sidebarOpen ? 0 : -260,
           width: 260,
           height: "100vh",
-          background: "#0F172A",
-          color: "#E2E8F0",
+          background: darkMode ? "#111827" : "#FFFFFF",
           padding: 30,
+          boxShadow: "2px 0 20px rgba(0,0,0,0.08)",
           transition: "all 0.3s ease",
           zIndex: 1000,
         }}
       >
-        <h3 style={{ marginBottom: 30 }}>Examog</h3>
+        <h3 style={{ marginBottom: 30, fontWeight: 600 }}>
+          Examog
+        </h3>
 
-        <button
-          style={sidebarBtn}
-        >
-          Login
-        </button>
-
-        <button
-          style={{ ...sidebarBtn, marginBottom: 30 }}
-        >
+        <button style={sidebarBtn}>Login</button>
+        <button style={{ ...sidebarBtn, marginBottom: 30 }}>
           Sign Up
         </button>
 
-        <div style={{ marginTop: 20 }}>
-          <p style={{ marginBottom: 8 }}>Theme</p>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            style={{
-              padding: "8px 14px",
-              borderRadius: 8,
-              border: "none",
-              background: "#C6A75E",
-              cursor: "pointer",
-              fontWeight: 600,
-            }}
-          >
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div>
+        <p style={{ marginBottom: 8, fontSize: 14 }}>
+          Appearance
+        </p>
+
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          style={{
+            padding: "8px 14px",
+            borderRadius: 8,
+            border: "none",
+            background: accent,
+            color: "#fff",
+            cursor: "pointer",
+            fontWeight: 500,
+          }}
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
       </div>
 
       {/* Sidebar Toggle */}
@@ -79,13 +78,13 @@ export default function Dashboard() {
           position: "fixed",
           top: 20,
           left: 20,
-          background: "#C6A75E",
+          background: accent,
           border: "none",
           padding: "8px 12px",
-          borderRadius: 6,
+          borderRadius: 8,
           cursor: "pointer",
           zIndex: 1100,
-          fontWeight: 600,
+          color: "#fff",
         }}
       >
         ☰
@@ -95,13 +94,14 @@ export default function Dashboard() {
       <section
         style={{
           textAlign: "center",
-          padding: "120px 20px 80px",
+          padding: "130px 20px 80px",
         }}
       >
         <h1
           style={{
-            fontSize: 60,
-            fontFamily: "'Cinzel', serif",
+            fontSize: 62,
+            fontFamily: "Playfair Display, serif",
+            fontStyle: "italic",
             fontWeight: 700,
             marginBottom: 18,
             letterSpacing: "1px",
@@ -112,10 +112,11 @@ export default function Dashboard() {
 
         <div
           style={{
-            width: 80,
+            width: 60,
             height: 3,
-            background: "#C6A75E",
+            background: accent,
             margin: "0 auto 18px",
+            borderRadius: 2,
           }}
         />
 
@@ -129,7 +130,7 @@ export default function Dashboard() {
         </p>
       </section>
 
-      {/* Main Content */}
+      {/* Main */}
       <div
         style={{
           maxWidth: 1100,
@@ -153,17 +154,17 @@ export default function Dashboard() {
               onClick={() => setSelectedYear(year)}
               style={{
                 padding: "14px 0",
-                borderRadius: 10,
+                borderRadius: 12,
                 textAlign: "center",
                 cursor: "pointer",
-                fontWeight: 600,
+                fontWeight: 500,
                 background:
                   selectedYear === year
-                    ? "#C6A75E"
+                    ? accent
                     : cardColor,
                 color:
                   selectedYear === year
-                    ? "#0F172A"
+                    ? "#fff"
                     : textColor,
                 border: "1px solid rgba(0,0,0,0.05)",
                 transition: "all 0.2s ease",
@@ -174,7 +175,7 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* Subject Cards */}
+        {/* Subjects */}
         {selectedYear && (
           <div
             style={{
@@ -189,11 +190,13 @@ export default function Dashboard() {
                 key={subj}
                 style={{
                   padding: 40,
-                  borderRadius: 16,
+                  borderRadius: 18,
                   background: cardColor,
                   border: "1px solid rgba(0,0,0,0.05)",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
+                  boxShadow:
+                    "0 8px 24px rgba(0,0,0,0.05)",
                 }}
               >
                 <h3
@@ -205,15 +208,6 @@ export default function Dashboard() {
                 >
                   {subj}
                 </h3>
-
-                <div
-                  style={{
-                    width: 40,
-                    height: 2,
-                    background: "#C6A75E",
-                    marginBottom: 14,
-                  }}
-                />
 
                 <p
                   style={{
@@ -235,9 +229,10 @@ export default function Dashboard() {
 const sidebarBtn = {
   width: "100%",
   padding: "10px 14px",
-  borderRadius: 8,
-  border: "none",
+  borderRadius: 10,
+  border: "1px solid #E5E7EB",
   marginBottom: 12,
   cursor: "pointer",
-  fontWeight: 600,
+  fontWeight: 500,
+  background: "transparent",
 };
