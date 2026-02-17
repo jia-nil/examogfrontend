@@ -8,21 +8,31 @@ export default function Dashboard() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #f9fafb 0%, #eef2ff 100%)",
+      }}
+    >
       <Navbar />
 
       {/* Hero */}
       <section
         style={{
           textAlign: "center",
-          padding: "100px 20px 60px",
+          padding: "120px 20px 80px",
         }}
       >
         <h1
           style={{
-            fontSize: 56,
+            fontSize: 58,
             fontWeight: 800,
-            marginBottom: 12,
+            marginBottom: 16,
+            background:
+              "linear-gradient(90deg, #2563EB, #4F46E5)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
         >
           Class 10 CBSE
@@ -32,6 +42,7 @@ export default function Dashboard() {
           style={{
             fontSize: 18,
             color: "#6B7280",
+            letterSpacing: "0.3px",
           }}
         >
           Previous Year Question Papers
@@ -52,8 +63,8 @@ export default function Dashboard() {
             display: "grid",
             gridTemplateColumns:
               "repeat(auto-fit, minmax(100px, 1fr))",
-            gap: 16,
-            marginBottom: 60,
+            gap: 18,
+            marginBottom: 70,
           }}
         >
           {years.map((year) => (
@@ -61,14 +72,16 @@ export default function Dashboard() {
               key={year}
               onClick={() => setSelectedYear(year)}
               style={{
-                padding: "12px 0",
-                borderRadius: 12,
+                padding: "14px 0",
+                borderRadius: 14,
                 textAlign: "center",
                 cursor: "pointer",
+                fontWeight: 600,
+                backdropFilter: "blur(6px)",
                 background:
                   selectedYear === year
-                    ? "#2563EB"
-                    : "#FFFFFF",
+                    ? "linear-gradient(90deg, #2563EB, #4F46E5)"
+                    : "rgba(255,255,255,0.7)",
                 color:
                   selectedYear === year
                     ? "#FFFFFF"
@@ -76,9 +89,28 @@ export default function Dashboard() {
                 border:
                   selectedYear === year
                     ? "none"
-                    : "1px solid #E5E7EB",
-                fontWeight: 500,
-                transition: "all 0.2s ease",
+                    : "1px solid rgba(0,0,0,0.05)",
+                boxShadow:
+                  selectedYear === year
+                    ? "0 8px 20px rgba(79,70,229,0.3)"
+                    : "0 4px 10px rgba(0,0,0,0.03)",
+                transition: "all 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                if (selectedYear !== year) {
+                  e.currentTarget.style.transform =
+                    "translateY(-3px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 8px 18px rgba(0,0,0,0.06)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (selectedYear !== year) {
+                  e.currentTarget.style.transform =
+                    "translateY(0)";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 10px rgba(0,0,0,0.03)";
+                }
               }}
             >
               {year}
@@ -92,34 +124,51 @@ export default function Dashboard() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit, minmax(240px, 1fr))",
-              gap: 24,
+                "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: 28,
             }}
           >
             {subjects.map((subj) => (
               <div
                 key={subj}
                 style={{
-                  padding: 32,
-                  borderRadius: 16,
-                  background: "#FFFFFF",
-                  border: "1px solid #E5E7EB",
+                  padding: 36,
+                  borderRadius: 20,
+                  background: "rgba(255,255,255,0.8)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(0,0,0,0.05)",
                   cursor: "pointer",
-                  transition: "all 0.2s ease",
+                  transition: "all 0.25s ease",
+                  boxShadow:
+                    "0 6px 18px rgba(0,0,0,0.04)",
                 }}
                 onMouseEnter={(e) => {
+                  e.currentTarget.style.transform =
+                    "translateY(-6px)";
                   e.currentTarget.style.boxShadow =
-                    "0 10px 25px rgba(0,0,0,0.05)";
+                    "0 14px 30px rgba(0,0,0,0.08)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.transform =
+                    "translateY(0)";
+                  e.currentTarget.style.boxShadow =
+                    "0 6px 18px rgba(0,0,0,0.04)";
                 }}
               >
-                <h3 style={{ marginBottom: 8 }}>{subj}</h3>
+                <h3
+                  style={{
+                    marginBottom: 10,
+                    fontSize: 20,
+                    fontWeight: 600,
+                  }}
+                >
+                  {subj}
+                </h3>
                 <p
                   style={{
                     color: "#6B7280",
                     fontSize: 14,
+                    lineHeight: 1.6,
                   }}
                 >
                   View Question & Answer PDFs
