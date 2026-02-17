@@ -152,33 +152,53 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {/* Stats */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: 20,
-            marginBottom: 60,
-          }}
-        >
-          {["16 Years Covered", "4 Core Subjects", "Structured Solutions", "AI Evaluation Soon"].map(
-            (item) => (
-              <div
-                key={item}
-                style={{
-                  background: colors.card,
-                  border: `1px solid ${colors.border}`,
-                  padding: 20,
-                  borderRadius: 16,
-                }}
-              >
-                <div style={{ fontSize: 14, color: colors.muted }}>
-                  {item}
-                </div>
-              </div>
-            )
-          )}
-        </div>
+        {/* Highlights */}
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: 16,
+    marginBottom: 60,
+  }}
+>
+  {[
+    "16 Years Covered",
+    "4 Core Subjects",
+    "Structured Solutions",
+    "AI Evaluation Soon",
+  ].map((item) => (
+    <div
+      key={item}
+      style={{
+        padding: "14px 18px",
+        borderRadius: 999,
+        background: darkMode
+          ? "rgba(129,140,248,0.08)"
+          : "rgba(99,102,241,0.06)",
+        border: `1px solid ${
+          darkMode ? "#1F2937" : "#E5E7EB"
+        }`,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        fontSize: 13,
+        fontWeight: 500,
+        color: colors.text,
+      }}
+    >
+      <div
+        style={{
+          width: 6,
+          height: 6,
+          borderRadius: 999,
+          background: colors.accent,
+        }}
+      />
+      {item}
+    </div>
+  ))}
+</div>
+
 
         {/* Year Grid */}
         <div
