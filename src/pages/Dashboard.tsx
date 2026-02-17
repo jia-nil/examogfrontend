@@ -37,15 +37,15 @@ export default function Dashboard() {
       };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: colors.bg,
-        color: colors.text,
-        fontFamily: "Poppins, sans-serif",
-        transition: "all 0.3s ease",
-      }}
-    >
+   <div style={{ marginBottom: 50 }}>
+  <h1 style={{ fontSize: 32, fontWeight: 600 }}>
+    Class 10 CBSE Papers
+  </h1>
+  <p style={{ fontSize: 14, color: "#6B7280", marginTop: 6 }}>
+    Access structured question papers from the last 16 years.
+  </p>
+</div>
+
       <Navbar />
 
       {/* Sidebar */}
@@ -199,81 +199,129 @@ export default function Dashboard() {
   ))}
 </div>
 
+{/* Year Section */}
+<div style={{ marginBottom: 60 }}>
+  <div style={{ marginBottom: 16 }}>
+    <h2 style={{ fontSize: 18, fontWeight: 600 }}>
+      Select Year
+    </h2>
+    <p style={{ fontSize: 14, color: "#6B7280" }}>
+      Choose a year to view available subjects
+    </p>
+  </div>
 
-        {/* Year Grid */}
+  <div
+    style={{
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 12,
+    }}
+  >
+    {years.map((year) => (
+      <div
+        key={year}
+        onClick={() => setSelectedYear(year)}
+        style={{
+          padding: "8px 16px",
+          borderRadius: 999,
+          cursor: "pointer",
+          fontSize: 14,
+          fontWeight: 500,
+          border: `1px solid ${
+            selectedYear === year
+              ? "#6366F1"
+              : "#E5E7EB"
+          }`,
+          background:
+            selectedYear === year
+              ? "#6366F1"
+              : "#FFFFFF",
+          color:
+            selectedYear === year
+              ? "#FFFFFF"
+              : "#111827",
+          transition: "all 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (selectedYear !== year) {
+            e.currentTarget.style.background = "#F3F4F6";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (selectedYear !== year) {
+            e.currentTarget.style.background = "#FFFFFF";
+          }
+        }}
+      >
+        {year}
+      </div>
+    ))}
+  </div>
+</div>
+
+
+       {selectedYear && (
+  <div style={{ marginTop: 40 }}>
+    <h2 style={{ fontSize: 18, fontWeight: 600, marginBottom: 20 }}>
+      Subjects for {selectedYear}
+    </h2>
+
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns:
+          "repeat(auto-fit, minmax(240px, 1fr))",
+        gap: 20,
+      }}
+    >
+      {subjects.map((subj) => (
         <div
+          key={subj}
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
-            gap: 16,
-            marginBottom: 50,
+            padding: 24,
+            borderRadius: 16,
+            border: "1px solid #E5E7EB",
+            background: "#FFFFFF",
+            cursor: "pointer",
+            transition: "all 0.25s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow =
+              "0 8px 24px rgba(0,0,0,0.05)";
+            e.currentTarget.style.transform =
+              "translateY(-3px)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "none";
+            e.currentTarget.style.transform =
+              "translateY(0)";
           }}
         >
-          {years.map((year) => (
-            <div
-              key={year}
-              onClick={() => setSelectedYear(year)}
-              style={{
-                padding: "12px 0",
-                textAlign: "center",
-                borderRadius: 12,
-                cursor: "pointer",
-                background:
-                  selectedYear === year
-                    ? colors.accent
-                    : colors.card,
-                color:
-                  selectedYear === year
-                    ? "#fff"
-                    : colors.text,
-                border: `1px solid ${colors.border}`,
-                transition: "all 0.2s ease",
-              }}
-            >
-              {year}
-            </div>
-          ))}
-        </div>
-
-        {/* Subjects */}
-        {selectedYear && (
-          <div
+          <h3
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 24,
+              fontSize: 16,
+              fontWeight: 600,
+              marginBottom: 6,
             }}
           >
-            {subjects.map((subj) => (
-              <div
-                key={subj}
-                style={{
-                  background: colors.card,
-                  border: `1px solid ${colors.border}`,
-                  padding: 30,
-                  borderRadius: 18,
-                  cursor: "pointer",
-                  transition: "all 0.25s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
-              >
-                <h3 style={{ marginBottom: 8, fontSize: 18 }}>
-                  {subj}
-                </h3>
-                <p style={{ fontSize: 14, color: colors.muted }}>
-                  View Question & Answer PDFs
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+            {subj}
+          </h3>
+
+          <p
+            style={{
+              fontSize: 13,
+              color: "#6B7280",
+            }}
+          >
+            View question papers and solutions
+          </p>
+        </div>
+      ))}
     </div>
+  </div>
+)}
+
+       
   );
 }
 
