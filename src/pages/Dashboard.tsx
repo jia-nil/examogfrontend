@@ -6,15 +6,90 @@ const subjects = ["Maths", "Science", "English", "SST"];
 
 export default function Dashboard() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const bgColor = darkMode ? "#0B1120" : "#F1F5F9";
+  const cardColor = darkMode ? "#111827" : "#FFFFFF";
+  const textColor = darkMode ? "#E2E8F0" : "#0F172A";
+  const subTextColor = darkMode ? "#94A3B8" : "#64748B";
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: "#F8FAFC",
+        background: bgColor,
+        transition: "all 0.3s ease",
+        color: textColor,
       }}
     >
       <Navbar />
+
+      {/* Sidebar */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: sidebarOpen ? 0 : -260,
+          width: 260,
+          height: "100vh",
+          background: "#0F172A",
+          color: "#E2E8F0",
+          padding: 30,
+          transition: "all 0.3s ease",
+          zIndex: 1000,
+        }}
+      >
+        <h3 style={{ marginBottom: 30 }}>Examog</h3>
+
+        <button
+          style={sidebarBtn}
+        >
+          Login
+        </button>
+
+        <button
+          style={{ ...sidebarBtn, marginBottom: 30 }}
+        >
+          Sign Up
+        </button>
+
+        <div style={{ marginTop: 20 }}>
+          <p style={{ marginBottom: 8 }}>Theme</p>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            style={{
+              padding: "8px 14px",
+              borderRadius: 8,
+              border: "none",
+              background: "#C6A75E",
+              cursor: "pointer",
+              fontWeight: 600,
+            }}
+          >
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div>
+      </div>
+
+      {/* Sidebar Toggle */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        style={{
+          position: "fixed",
+          top: 20,
+          left: 20,
+          background: "#C6A75E",
+          border: "none",
+          padding: "8px 12px",
+          borderRadius: 6,
+          cursor: "pointer",
+          zIndex: 1100,
+          fontWeight: 600,
+        }}
+      >
+        ☰
+      </button>
 
       {/* Hero */}
       <section
@@ -25,11 +100,11 @@ export default function Dashboard() {
       >
         <h1
           style={{
-            fontSize: 56,
+            fontSize: 60,
+            fontFamily: "'Cinzel', serif",
             fontWeight: 700,
-            marginBottom: 16,
-            color: "#0F172A",
-            letterSpacing: "-1px",
+            marginBottom: 18,
+            letterSpacing: "1px",
           }}
         >
           Class 10 CBSE
@@ -37,19 +112,17 @@ export default function Dashboard() {
 
         <div
           style={{
-            width: 60,
+            width: 80,
             height: 3,
             background: "#C6A75E",
             margin: "0 auto 18px",
-            borderRadius: 2,
           }}
         />
 
         <p
           style={{
             fontSize: 18,
-            color: "#64748B",
-            letterSpacing: "0.3px",
+            color: subTextColor,
           }}
         >
           Previous Year Question Papers
@@ -83,34 +156,17 @@ export default function Dashboard() {
                 borderRadius: 10,
                 textAlign: "center",
                 cursor: "pointer",
-                fontWeight: 500,
+                fontWeight: 600,
                 background:
                   selectedYear === year
-                    ? "#0F172A"
-                    : "#FFFFFF",
+                    ? "#C6A75E"
+                    : cardColor,
                 color:
                   selectedYear === year
-                    ? "#C6A75E"
-                    : "#0F172A",
-                border:
-                  selectedYear === year
-                    ? "none"
-                    : "1px solid #E2E8F0",
-                boxShadow:
-                  selectedYear === year
-                    ? "0 8px 20px rgba(15,23,42,0.15)"
-                    : "0 3px 8px rgba(0,0,0,0.03)",
+                    ? "#0F172A"
+                    : textColor,
+                border: "1px solid rgba(0,0,0,0.05)",
                 transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                if (selectedYear !== year) {
-                  e.currentTarget.style.transform =
-                    "translateY(-2px)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform =
-                  "translateY(0)";
               }}
             >
               {year}
@@ -134,24 +190,10 @@ export default function Dashboard() {
                 style={{
                   padding: 40,
                   borderRadius: 16,
-                  background: "#FFFFFF",
-                  border: "1px solid #E2E8F0",
+                  background: cardColor,
+                  border: "1px solid rgba(0,0,0,0.05)",
                   cursor: "pointer",
                   transition: "all 0.25s ease",
-                  boxShadow:
-                    "0 8px 24px rgba(15,23,42,0.05)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform =
-                    "translateY(-6px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 14px 32px rgba(15,23,42,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform =
-                    "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 24px rgba(15,23,42,0.05)";
                 }}
               >
                 <h3
@@ -159,7 +201,6 @@ export default function Dashboard() {
                     marginBottom: 12,
                     fontSize: 20,
                     fontWeight: 600,
-                    color: "#0F172A",
                   }}
                 >
                   {subj}
@@ -176,9 +217,8 @@ export default function Dashboard() {
 
                 <p
                   style={{
-                    color: "#64748B",
+                    color: subTextColor,
                     fontSize: 14,
-                    lineHeight: 1.6,
                   }}
                 >
                   View Question & Answer PDFs
@@ -191,3 +231,13 @@ export default function Dashboard() {
     </div>
   );
 }
+
+const sidebarBtn = {
+  width: "100%",
+  padding: "10px 14px",
+  borderRadius: 8,
+  border: "none",
+  marginBottom: 12,
+  cursor: "pointer",
+  fontWeight: 600,
+};
