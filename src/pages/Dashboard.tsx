@@ -10,14 +10,32 @@ export default function Dashboard() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh", position: "relative" }}>
+
+      {/* Subtle Glow Elements */}
+      <div
+        style={{
+          position: "absolute",
+          top: 120,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 600,
+          height: 600,
+          background: "radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 70%)",
+          borderRadius: "50%",
+          zIndex: 0,
+        }}
+      />
+
       <Navbar />
 
       {/* Hero */}
       <section
         style={{
           textAlign: "center",
-          padding: "110px 20px 70px",
+          padding: "140px 20px 100px",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <h1
@@ -25,11 +43,24 @@ export default function Dashboard() {
             fontSize: 64,
             fontWeight: 800,
             letterSpacing: "-0.04em",
-            marginBottom: 16,
+            marginBottom: 10,
           }}
         >
-          Previous Year Papers
+          Previous Year
         </h1>
+
+        <h2
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontStyle: "italic",
+            fontSize: 56,
+            fontWeight: 700,
+            color: "#4F46E5",
+            marginBottom: 20,
+          }}
+        >
+          Board Papers
+        </h2>
 
         <p
           style={{
@@ -37,24 +68,27 @@ export default function Dashboard() {
             color: "#64748B",
           }}
         >
-          Class 10 & 12 · CBSE & ICSE
+          Class 10 & 12 · CBSE · ICSE
         </p>
       </section>
 
-      {/* Panel */}
+      {/* Main Panel */}
       <div
         style={{
           maxWidth: 1100,
           margin: "0 auto",
-          padding: 48,
+          padding: 60,
           background: "#FFFFFF",
-          borderRadius: 32,
-          boxShadow: "0 25px 60px rgba(0,0,0,0.06)",
+          borderRadius: 36,
+          boxShadow: "0 40px 100px rgba(15,23,42,0.06)",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        {/* Class + Board */}
-        <div style={{ marginBottom: 50 }}>
-          <div style={{ display: "flex", gap: 16, marginBottom: 24 }}>
+        {/* Class & Board */}
+        <div style={{ marginBottom: 60 }}>
+
+          <div style={{ display: "flex", gap: 16, marginBottom: 30 }}>
             {[10, 12].map((cls) => (
               <div
                 key={cls}
@@ -64,13 +98,13 @@ export default function Dashboard() {
                   setSelectedYear(null);
                 }}
                 style={{
-                  padding: "10px 22px",
+                  padding: "12px 26px",
                   borderRadius: 999,
                   cursor: "pointer",
                   background:
                     selectedClass === cls
-                      ? "#2563EB"
-                      : "#E0E7FF",
+                      ? "#4F46E5"
+                      : "#F1F5FF",
                   color:
                     selectedClass === cls
                       ? "#FFFFFF"
@@ -94,13 +128,13 @@ export default function Dashboard() {
                     setSelectedYear(null);
                   }}
                   style={{
-                    padding: "10px 22px",
+                    padding: "12px 26px",
                     borderRadius: 999,
                     cursor: "pointer",
                     background:
                       selectedBoard === board
-                        ? "#2563EB"
-                        : "#E0E7FF",
+                        ? "#4F46E5"
+                        : "#F1F5FF",
                     color:
                       selectedBoard === board
                         ? "#FFFFFF"
@@ -119,13 +153,13 @@ export default function Dashboard() {
         {/* Year Grid */}
         {selectedClass && selectedBoard && (
           <>
-            <div style={{ marginBottom: 50 }}>
+            <div style={{ marginBottom: 60 }}>
               <div
                 style={{
                   display: "grid",
                   gridTemplateColumns:
-                    "repeat(auto-fit, minmax(90px, 1fr))",
-                  gap: 14,
+                    "repeat(auto-fit, minmax(100px, 1fr))",
+                  gap: 16,
                 }}
               >
                 {years.map((year) => (
@@ -133,19 +167,18 @@ export default function Dashboard() {
                     key={year}
                     onClick={() => setSelectedYear(year)}
                     style={{
-                      padding: "8px 0",
-                      borderRadius: 14,
+                      padding: "10px 0",
+                      borderRadius: 16,
                       textAlign: "center",
                       cursor: "pointer",
                       background:
                         selectedYear === year
-                          ? "#2563EB"
-                          : "#F1F5FF",
+                          ? "#4F46E5"
+                          : "#F8FAFF",
                       color:
                         selectedYear === year
                           ? "#FFFFFF"
                           : "#0F172A",
-                      fontSize: 14,
                       fontWeight: 500,
                       transition: "all 0.2s ease",
                     }}
@@ -156,48 +189,48 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Subjects */}
+            {/* Subject Cards */}
             {selectedYear && (
-              <div>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns:
-                      "repeat(auto-fit, minmax(240px, 1fr))",
-                    gap: 24,
-                  }}
-                >
-                  {subjects.map((subj) => (
-                    <div
-                      key={subj}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: 30,
+                }}
+              >
+                {subjects.map((subj) => (
+                  <div
+                    key={subj}
+                    style={{
+                      padding: 40,
+                      borderRadius: 28,
+                      background: "#FFFFFF",
+                      boxShadow:
+                        "0 20px 60px rgba(15,23,42,0.05)",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.transform =
+                        "translateY(-6px)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.transform =
+                        "translateY(0px)")
+                    }
+                  >
+                    <h3 style={{ marginBottom: 8 }}>{subj}</h3>
+                    <p
                       style={{
-                        padding: 36,
-                        borderRadius: 24,
-                        background: "#F8FAFF",
-                        cursor: "pointer",
-                        transition: "all 0.2s ease",
+                        color: "#64748B",
+                        fontSize: 14,
                       }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.transform =
-                          "translateY(-4px)")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.transform =
-                          "translateY(0px)")
-                      }
                     >
-                      <h3 style={{ marginBottom: 6 }}>{subj}</h3>
-                      <p
-                        style={{
-                          color: "#64748B",
-                          fontSize: 14,
-                        }}
-                      >
-                        Question & Answer PDFs
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                      Question & Answer PDFs
+                    </p>
+                  </div>
+                ))}
               </div>
             )}
           </>
