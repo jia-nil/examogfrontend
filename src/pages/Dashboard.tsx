@@ -27,68 +27,82 @@ export default function Dashboard() {
     >
       <Navbar />
 
-      {/* Sidebar */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: sidebarOpen ? 0 : -260,
-          width: 260,
-          height: "100vh",
-          background: darkMode ? "#111827" : "#FFFFFF",
-          padding: 30,
-          boxShadow: "2px 0 20px rgba(0,0,0,0.08)",
-          transition: "all 0.3s ease",
-          zIndex: 1000,
-        }}
-      >
-        <h3 style={{ marginBottom: 30, fontWeight: 600 }}>
-          Examog
-        </h3>
+    {/* Sidebar */}
+<div
+  style={{
+    position: "fixed",
+    top: 0,
+    left: sidebarOpen ? 0 : -260,
+    width: 260,
+    height: "100vh",
+    background: darkMode ? "#0F172A" : "#F8FAFC",
+    padding: "80px 24px 24px 24px",
+    transition: "left 0.3s ease",
+    borderRight: darkMode
+      ? "1px solid #1E293B"
+      : "1px solid #E5E7EB",
+    zIndex: 1000,
+  }}
+>
+  {/* Logo Section */}
+  <div
+    style={{
+      fontSize: 16,
+      fontWeight: 600,
+      marginBottom: 40,
+      color: darkMode ? "#E2E8F0" : "#111827",
+    }}
+  >
+    exam<span style={{ color: "#8B5CF6" }}>OG</span>
+  </div>
 
-        <button style={sidebarBtn}>Login</button>
-        <button style={{ ...sidebarBtn, marginBottom: 30 }}>
-          Sign Up
-        </button>
+  {/* Navigation */}
+  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
 
-        <p style={{ marginBottom: 8, fontSize: 14 }}>
-          Appearance
-        </p>
+    <SidebarItem darkMode={darkMode} label="Login" />
+    <SidebarItem darkMode={darkMode} label="Sign Up" />
 
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          style={{
-            padding: "8px 14px",
-            borderRadius: 8,
-            border: "none",
-            background: accent,
-            color: "#fff",
-            cursor: "pointer",
-            fontWeight: 500,
-          }}
-        >
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </button>
-      </div>
+  </div>
 
-      {/* Sidebar Toggle */}
-      <button
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        style={{
-          position: "fixed",
-          top: 20,
-          left: 20,
-          background: accent,
-          border: "none",
-          padding: "8px 12px",
-          borderRadius: 8,
-          cursor: "pointer",
-          zIndex: 1100,
-          color: "#fff",
-        }}
-      >
-        ☰
-      </button>
+  {/* Divider */}
+  <div
+    style={{
+      height: 1,
+      background: darkMode ? "#1E293B" : "#E5E7EB",
+      margin: "40px 0",
+    }}
+  />
+
+  {/* Appearance */}
+  <div style={{ fontSize: 13, marginBottom: 12, opacity: 0.7 }}>
+    Appearance
+  </div>
+
+  <button
+    onClick={() => setDarkMode(!darkMode)}
+    style={{
+      background: "transparent",
+      border: "none",
+      padding: "10px 12px",
+      textAlign: "left",
+      cursor: "pointer",
+      borderRadius: 8,
+      color: darkMode ? "#E2E8F0" : "#111827",
+      transition: "background 0.2s ease",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.background = darkMode
+        ? "#1E293B"
+        : "#E5E7EB";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.background = "transparent";
+    }}
+  >
+    {darkMode ? "Light Mode" : "Dark Mode"}
+  </button>
+</div>
+
 
       {/* Hero */}
       <section
