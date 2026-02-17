@@ -9,11 +9,11 @@ export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const bgColor = darkMode ? "#1E1B2E" : "#FDF6F9";
-  const cardColor = darkMode ? "#2A243F" : "#FFFFFF";
-  const textColor = darkMode ? "#F3F4F6" : "#1F2937";
-  const subTextColor = darkMode ? "#C4B5FD" : "#6B7280";
-  const accent = darkMode ? "#C4B5FD" : "#8B5CF6";
+  const bgColor = darkMode ? "#0F172A" : "#EEF2F7";
+  const cardColor = darkMode ? "#1E293B" : "#FFFFFF";
+  const textColor = darkMode ? "#E2E8F0" : "#0F172A";
+  const subTextColor = darkMode ? "#94A3B8" : "#64748B";
+  const accent = darkMode ? "#818CF8" : "#3B82F6";
 
   return (
     <div
@@ -35,13 +35,11 @@ export default function Dashboard() {
           left: sidebarOpen ? 0 : -260,
           width: 260,
           height: "100vh",
-          background: cardColor,
+          background: darkMode ? "#111827" : "#FFFFFF",
           padding: 30,
-          boxShadow: "0 0 40px rgba(0,0,0,0.08)",
-          transition: "all 0.4s ease",
+          boxShadow: "2px 0 20px rgba(0,0,0,0.08)",
+          transition: "all 0.3s ease",
           zIndex: 1000,
-          borderTopRightRadius: 30,
-          borderBottomRightRadius: 30,
         }}
       >
         <h3 style={{ marginBottom: 30, fontWeight: 600 }}>
@@ -61,11 +59,12 @@ export default function Dashboard() {
           onClick={() => setDarkMode(!darkMode)}
           style={{
             padding: "8px 14px",
-            borderRadius: 20,
+            borderRadius: 8,
             border: "none",
             background: accent,
             color: "#fff",
             cursor: "pointer",
+            fontWeight: 500,
           }}
         >
           {darkMode ? "Light Mode" : "Dark Mode"}
@@ -77,16 +76,15 @@ export default function Dashboard() {
         onClick={() => setSidebarOpen(!sidebarOpen)}
         style={{
           position: "fixed",
-          top: 25,
-          left: 25,
+          top: 20,
+          left: 20,
           background: accent,
           border: "none",
-          padding: "8px 14px",
-          borderRadius: 20,
+          padding: "8px 12px",
+          borderRadius: 8,
           cursor: "pointer",
           zIndex: 1100,
           color: "#fff",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
         }}
       >
         ☰
@@ -96,18 +94,31 @@ export default function Dashboard() {
       <section
         style={{
           textAlign: "center",
-          padding: "140px 20px 90px",
+          padding: "130px 20px 80px",
         }}
       >
         <h1
           style={{
-            fontSize: 72,
-            fontFamily: "Parisienne, cursive",
-            marginBottom: 20,
+            fontSize: 62,
+            fontFamily: "Playfair Display, serif",
+            fontStyle: "italic",
+            fontWeight: 700,
+            marginBottom: 18,
+            letterSpacing: "1px",
           }}
         >
           Class 10 CBSE
         </h1>
+
+        <div
+          style={{
+            width: 60,
+            height: 3,
+            background: accent,
+            margin: "0 auto 18px",
+            borderRadius: 2,
+          }}
+        />
 
         <p
           style={{
@@ -124,7 +135,7 @@ export default function Dashboard() {
         style={{
           maxWidth: 1100,
           margin: "0 auto",
-          padding: "0 40px 120px",
+          padding: "0 40px 100px",
         }}
       >
         {/* Year Grid */}
@@ -133,8 +144,8 @@ export default function Dashboard() {
             display: "grid",
             gridTemplateColumns:
               "repeat(auto-fit, minmax(100px, 1fr))",
-            gap: 20,
-            marginBottom: 80,
+            gap: 18,
+            marginBottom: 70,
           }}
         >
           {years.map((year) => (
@@ -143,7 +154,7 @@ export default function Dashboard() {
               onClick={() => setSelectedYear(year)}
               style={{
                 padding: "14px 0",
-                borderRadius: 25,
+                borderRadius: 12,
                 textAlign: "center",
                 cursor: "pointer",
                 fontWeight: 500,
@@ -155,9 +166,8 @@ export default function Dashboard() {
                   selectedYear === year
                     ? "#fff"
                     : textColor,
-                boxShadow:
-                  "0 10px 30px rgba(0,0,0,0.06)",
-                transition: "all 0.3s ease",
+                border: "1px solid rgba(0,0,0,0.05)",
+                transition: "all 0.2s ease",
               }}
             >
               {year}
@@ -172,7 +182,7 @@ export default function Dashboard() {
               display: "grid",
               gridTemplateColumns:
                 "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 30,
+              gap: 28,
             }}
           >
             {subjects.map((subj) => (
@@ -180,17 +190,18 @@ export default function Dashboard() {
                 key={subj}
                 style={{
                   padding: 40,
-                  borderRadius: 30,
+                  borderRadius: 18,
                   background: cardColor,
+                  border: "1px solid rgba(0,0,0,0.05)",
                   cursor: "pointer",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.25s ease",
                   boxShadow:
-                    "0 20px 40px rgba(0,0,0,0.06)",
+                    "0 8px 24px rgba(0,0,0,0.05)",
                 }}
               >
                 <h3
                   style={{
-                    marginBottom: 10,
+                    marginBottom: 12,
                     fontSize: 20,
                     fontWeight: 600,
                   }}
@@ -218,9 +229,10 @@ export default function Dashboard() {
 const sidebarBtn = {
   width: "100%",
   padding: "10px 14px",
-  borderRadius: 25,
-  border: "none",
-  marginBottom: 14,
+  borderRadius: 10,
+  border: "1px solid #E5E7EB",
+  marginBottom: 12,
   cursor: "pointer",
-  background: "#EDE9FE",
+  fontWeight: 500,
+  background: "transparent",
 };
