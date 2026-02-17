@@ -37,14 +37,14 @@ export default function Dashboard() {
       };
 
   return (
-   <div style={{ marginBottom: 50 }}>
-  <h1 style={{ fontSize: 32, fontWeight: 600 }}>
-    Class 10 CBSE Papers
-  </h1>
-  <p style={{ fontSize: 14, color: "#6B7280", marginTop: 6 }}>
-    Access structured question papers from the last 16 years.
-  </p>
-</div>
+  <div
+    style={{
+      minHeight: "100vh",
+      background: colors.bg,
+      color: colors.text,
+      fontFamily: "Poppins, sans-serif",
+    }}
+  >
 
       <Navbar />
 
@@ -129,28 +129,28 @@ export default function Dashboard() {
       </button>
 
       {/* Content Wrapper */}
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "120px 32px 80px",
-        }}
-      >
-        {/* Page Header */}
-        <div style={{ marginBottom: 40 }}>
-          <h1
-            style={{
-              fontSize: 40,
-              fontWeight: 600,
-              marginBottom: 8,
-            }}
-          >
-            Class 10 CBSE Papers
-          </h1>
-          <p style={{ color: colors.muted }}>
-            Access 16 years of structured question papers
-          </p>
-        </div>
+     <div
+      style={{
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "120px 32px 80px",
+      }}
+    >
+      {/* Page Header */}
+      <div style={{ marginBottom: 40 }}>
+        <h1
+          style={{
+            fontSize: 40,
+            fontWeight: 600,
+            marginBottom: 8,
+          }}
+        >
+          Class 10 CBSE Papers
+        </h1>
+        <p style={{ color: colors.muted }}>
+          Access 16 years of structured question papers
+        </p>
+      </div>
 
         {/* Highlights */}
 <div
