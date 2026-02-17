@@ -9,11 +9,11 @@ export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const bgColor = darkMode ? "#0F172A" : "#EEF2F7";
-  const cardColor = darkMode ? "#1E293B" : "#FFFFFF";
-  const textColor = darkMode ? "#E2E8F0" : "#0F172A";
-  const subTextColor = darkMode ? "#94A3B8" : "#64748B";
-  const accent = darkMode ? "#818CF8" : "#3B82F6";
+  const bgColor = darkMode ? "#1E1B2E" : "#FDF6F9";
+  const cardColor = darkMode ? "#2A243F" : "#FFFFFF";
+  const textColor = darkMode ? "#F3F4F6" : "#1F2937";
+  const subTextColor = darkMode ? "#C4B5FD" : "#6B7280";
+  const accent = darkMode ? "#C4B5FD" : "#8B5CF6";
 
   return (
     <div
@@ -35,11 +35,13 @@ export default function Dashboard() {
           left: sidebarOpen ? 0 : -260,
           width: 260,
           height: "100vh",
-          background: darkMode ? "#111827" : "#FFFFFF",
+          background: cardColor,
           padding: 30,
-          boxShadow: "2px 0 20px rgba(0,0,0,0.08)",
-          transition: "all 0.3s ease",
+          boxShadow: "0 0 40px rgba(0,0,0,0.08)",
+          transition: "all 0.4s ease",
           zIndex: 1000,
+          borderTopRightRadius: 30,
+          borderBottomRightRadius: 30,
         }}
       >
         <h3 style={{ marginBottom: 30, fontWeight: 600 }}>
@@ -59,12 +61,11 @@ export default function Dashboard() {
           onClick={() => setDarkMode(!darkMode)}
           style={{
             padding: "8px 14px",
-            borderRadius: 8,
+            borderRadius: 20,
             border: "none",
             background: accent,
             color: "#fff",
             cursor: "pointer",
-            fontWeight: 500,
           }}
         >
           {darkMode ? "Light Mode" : "Dark Mode"}
@@ -76,15 +77,16 @@ export default function Dashboard() {
         onClick={() => setSidebarOpen(!sidebarOpen)}
         style={{
           position: "fixed",
-          top: 20,
-          left: 20,
+          top: 25,
+          left: 25,
           background: accent,
           border: "none",
-          padding: "8px 12px",
-          borderRadius: 8,
+          padding: "8px 14px",
+          borderRadius: 20,
           cursor: "pointer",
           zIndex: 1100,
           color: "#fff",
+          boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
         }}
       >
         ☰
@@ -94,31 +96,18 @@ export default function Dashboard() {
       <section
         style={{
           textAlign: "center",
-          padding: "130px 20px 80px",
+          padding: "140px 20px 90px",
         }}
       >
         <h1
           style={{
-            fontSize: 62,
-            fontFamily: "Playfair Display, serif",
-            fontStyle: "italic",
-            fontWeight: 700,
-            marginBottom: 18,
-            letterSpacing: "1px",
+            fontSize: 72,
+            fontFamily: "Parisienne, cursive",
+            marginBottom: 20,
           }}
         >
           Class 10 CBSE
         </h1>
-
-        <div
-          style={{
-            width: 60,
-            height: 3,
-            background: accent,
-            margin: "0 auto 18px",
-            borderRadius: 2,
-          }}
-        />
 
         <p
           style={{
@@ -135,7 +124,7 @@ export default function Dashboard() {
         style={{
           maxWidth: 1100,
           margin: "0 auto",
-          padding: "0 40px 100px",
+          padding: "0 40px 120px",
         }}
       >
         {/* Year Grid */}
@@ -144,8 +133,8 @@ export default function Dashboard() {
             display: "grid",
             gridTemplateColumns:
               "repeat(auto-fit, minmax(100px, 1fr))",
-            gap: 18,
-            marginBottom: 70,
+            gap: 20,
+            marginBottom: 80,
           }}
         >
           {years.map((year) => (
@@ -154,7 +143,7 @@ export default function Dashboard() {
               onClick={() => setSelectedYear(year)}
               style={{
                 padding: "14px 0",
-                borderRadius: 12,
+                borderRadius: 25,
                 textAlign: "center",
                 cursor: "pointer",
                 fontWeight: 500,
@@ -166,8 +155,9 @@ export default function Dashboard() {
                   selectedYear === year
                     ? "#fff"
                     : textColor,
-                border: "1px solid rgba(0,0,0,0.05)",
-                transition: "all 0.2s ease",
+                boxShadow:
+                  "0 10px 30px rgba(0,0,0,0.06)",
+                transition: "all 0.3s ease",
               }}
             >
               {year}
@@ -182,7 +172,7 @@ export default function Dashboard() {
               display: "grid",
               gridTemplateColumns:
                 "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 28,
+              gap: 30,
             }}
           >
             {subjects.map((subj) => (
@@ -190,18 +180,17 @@ export default function Dashboard() {
                 key={subj}
                 style={{
                   padding: 40,
-                  borderRadius: 18,
+                  borderRadius: 30,
                   background: cardColor,
-                  border: "1px solid rgba(0,0,0,0.05)",
                   cursor: "pointer",
-                  transition: "all 0.25s ease",
+                  transition: "all 0.3s ease",
                   boxShadow:
-                    "0 8px 24px rgba(0,0,0,0.05)",
+                    "0 20px 40px rgba(0,0,0,0.06)",
                 }}
               >
                 <h3
                   style={{
-                    marginBottom: 12,
+                    marginBottom: 10,
                     fontSize: 20,
                     fontWeight: 600,
                   }}
@@ -229,10 +218,9 @@ export default function Dashboard() {
 const sidebarBtn = {
   width: "100%",
   padding: "10px 14px",
-  borderRadius: 10,
-  border: "1px solid #E5E7EB",
-  marginBottom: 12,
+  borderRadius: 25,
+  border: "none",
+  marginBottom: 14,
   cursor: "pointer",
-  fontWeight: 500,
-  background: "transparent",
+  background: "#EDE9FE",
 };
