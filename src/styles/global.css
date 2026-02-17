@@ -2,8 +2,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #F3F6FF 0%, #EEF2FF 100%);
-  color: #0F172A;
+  background: #0F1222;
+  color: #F1F5FF;
 }
 
 * {
